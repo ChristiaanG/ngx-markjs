@@ -55,14 +55,14 @@ export class MarkjsHighlightDirective implements OnChanges {
   }
 
   hightlightText() {
-    this.markjsHighlight = this.markjsHighlight || '';
+    this.markjsHighlight = this.markjsHighlight;
     if (this.markjsHighlight && this.markjsHighlight.length <= 2) {
       this.markInstance.unmark();
       return;
     } else {
       this.markInstance.unmark({
         done: () => {
-          this.markInstance.markRegExp((this.markjsHighlight || ''), this.markjsConfig);
+          this.markInstance.markRegExp((this.markjsHighlight), this.markjsConfig);
         }
       });
     }
